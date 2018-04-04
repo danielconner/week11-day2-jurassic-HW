@@ -15,20 +15,31 @@ Park.prototype.removeSpecificType = function (type) {
   let dinoKillList = []
   for(let dinos of this.enclosure){
     if(dinos.type == type){
-      dinoKillList.push(dinos);
+      this.enclosure.pop(dinos);
     }
-      for(let deadies of dinoKillList){
-        dinoKillList.pop(deadies);
-      }
+  //     for(let deadies of dinoKillList){
+  //       dinoKillList.pop(deadies);
+  //     }
   }
 };
 
 Park.prototype.removeBigDinoLovers = function () {
   for(dinos of this.enclosure){
-    if(dinos.offspring > 2){  
+    if(dinos.offspring > 2){
     }
     this.enclosure.pop(dinos);
   }
+};
+
+Park.prototype.calcTotalDino = function (dino) {
+    this.enclosure.length += dino.offspring;
+};
+
+Park.prototype.yearTwoTotalDinos = function (dinos) {
+  for(let dino in dinos){
+    dinos += (dino + dino.offspring) * dinos
+  }
+
 };
 
 

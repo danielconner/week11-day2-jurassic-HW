@@ -64,7 +64,7 @@ describe('park', function(){
     park.addDino(dinosaur4);
     assert.strictEqual(park.enclosure.length, 4)
     park.removeSpecificType("raptor")
-    assert.strictEqual(this.dinoKillList.length, 0)
+    assert.strictEqual(park.enclosure.length, 2)
   });
 
   it('can remove dinos with offspring count > 2', function(){
@@ -76,5 +76,21 @@ describe('park', function(){
     park.removeBigDinoLovers();
     assert.strictEqual(park.enclosure.length, 2)
   });
+
+  it('total dinos after 1 year starting with 1 dino', function(){
+    park.addDino(dinosaur1);
+    assert.strictEqual(park.enclosure.length, 1)
+    park.calcTotalDino(dinosaur1);
+    assert.strictEqual(park.enclosure.length, 4)
+  })
+
+  it('total dinos after 2 years starting with 1 dino', function(){
+    park.addDino(dinosaur1);
+    assert.strictEqual(park.enclosure.length, 1)
+    park.calcTotalDino(dinosaur1);
+    assert.strictEqual(park.enclosure.length, 4)
+    park.yearTwoTotalDinos(park.enclosure.length);
+    assert.strictEqual(park.enclosure.length, 16)
+  })
 
 });
